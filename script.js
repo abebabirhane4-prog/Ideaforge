@@ -4,7 +4,7 @@ function createIdea() {
                           "Write your idea first 💡"
    } else {
        document.getElementById("result").innerText=
-           "Your idea: " + idea + ";
+           "Your idea: " + idea + " 🚀";
    }
 }  
   
