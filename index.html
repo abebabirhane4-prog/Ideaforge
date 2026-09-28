@@ -1,37 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>IdeaForge</title>
+
+    <link rel="stylesheet" href="./style.css">
+
 </head>
 
 <body>
 
-    <h1>IDEA FORGE</h1>
+    <main class="app">
 
-    <p>Turn your thoughts into something real.</p>
+        <h1>IDEA FORGE</h1>
 
-    <input id="ideaInput" type="text" placeholder="What are you creating today?">
+        <p>
+            Turn your thoughts into something real.
+        </p>
 
-    <button onclick="createIdea()">CREATE MY IDEA</button>
+        <input
+            id="ideaInput"
+            type="text"
+            placeholder="What are you creating today?"
+        >
 
-    <h2 id="result"></h2>
+        <button onclick="createIdea()">
+            CREATE MY IDEA 🚀
+        </button>
+
+        <div id="result"></div>
+
+    </main>
+
 
     <script>
-        function createIdea() {
-            const question = document.getElementById("ideaInput").value.toLowerCase();
-            const result = document.getElementById("result");
 
-            if (question.includes("business")) {
-                result.innerText = "Business idea: Create a platform that helps small businesses.";
-            } else if (question.includes("app")) {
-                result.innerText = "App idea: Create an app that solves an everyday problem.";
-            } else if (question.includes("school")) {
-                result.innerText = "School idea: Create an app that makes studying easier.";
-            } else {
-                result.innerText = "Creative idea: Build something that solves a problem you see every day.";
+        function createIdea() {
+
+            const question =
+                document.getElementById("ideaInput").value.toLowerCase();
+
+            const result =
+                document.getElementById("result");
+
+
+            if (question.trim() === "") {
+
+                result.innerText =
+                    "💡 Tell me what kind of idea you want.";
+
             }
+
+            else if (question.includes("business")) {
+
+                result.innerText =
+                    "💼 Business idea: Build a platform that helps small businesses manage their customers.";
+
+            }
+
+            else if (question.includes("app")) {
+
+                result.innerText =
+                    "📱 App idea: Create an app that solves an everyday problem.";
+
+            }
+
+            else if (
+                question.includes("school") ||
+                question.includes("student")
+            ) {
+
+                result.innerText =
+                    "🎓 School idea: Create a smart study app for students.";
+
+            }
+
+            else if (question.includes("money")) {
+
+                result.innerText =
+                    "💰 Money idea: Build a marketplace where creators can sell digital products.";
+
+            }
+
+            else {
+
+                result.innerText =
+                    "🚀 Creative idea: Turn an everyday problem into a useful invention.";
+
+            }
+
         }
+
     </script>
 
 </body>
+
 </html>
