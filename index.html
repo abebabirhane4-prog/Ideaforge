@@ -1,34 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
     <title>IdeaForge</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #050505;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .app {
+            width: 85%;
+            max-width: 700px;
+            padding: 60px 40px;
+            text-align: center;
+            background: #111111;
+            border: 1px solid #444;
+            border-radius: 25px;
+            box-shadow: 0 0 60px rgba(255,255,255,0.08);
+        }
+
+        h1 {
+            font-size: 55px;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #999;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        input {
+            width: 80%;
+            padding: 17px;
+            border-radius: 12px;
+            border: 1px solid #444;
+            background: #181818;
+            color: white;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 16px 28px;
+            border: none;
+            border-radius: 12px;
+            background: white;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            background: #181818;
+            border-radius: 12px;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <main class="app">
+    <div class="app">
 
         <h1>IDEA FORGE</h1>
 
-        <p>
-            Turn your thoughts into something real.
-        </p>
+        <p>Turn your thoughts into something real.</p>
 
-        <input
-            id="ideaInput"
-            type="text"
-            placeholder="What are you creating today?"
-        >
+        <input id="ideaInput"
+               type="text"
+               placeholder="What are you creating today?">
+
+        <br>
 
         <button onclick="createIdea()">
             CREATE MY IDEA 🚀
@@ -36,11 +93,9 @@
 
         <div id="result"></div>
 
-    </main>
-
+    </div>
 
     <script>
-
         function createIdea() {
 
             const question =
@@ -49,56 +104,38 @@
             const result =
                 document.getElementById("result");
 
-
             if (question.trim() === "") {
-
                 result.innerText =
                     "💡 Tell me what kind of idea you want.";
-
             }
 
             else if (question.includes("business")) {
-
                 result.innerText =
-                    "💼 Business idea: Build a platform that helps small businesses manage their customers.";
-
+                    "💼 Business idea: Build a platform that helps small businesses.";
             }
 
             else if (question.includes("app")) {
-
                 result.innerText =
                     "📱 App idea: Create an app that solves an everyday problem.";
-
             }
 
-            else if (
-                question.includes("school") ||
-                question.includes("student")
-            ) {
-
+            else if (question.includes("school") ||
+                     question.includes("student")) {
                 result.innerText =
-                    "🎓 School idea: Create a smart study app for students.";
-
+                    "🎓 School idea: Create a smart study app.";
             }
 
             else if (question.includes("money")) {
-
                 result.innerText =
-                    "💰 Money idea: Build a marketplace where creators can sell digital products.";
-
+                    "💰 Money idea: Build a marketplace for digital products.";
             }
 
             else {
-
                 result.innerText =
-                    "🚀 Creative idea: Turn an everyday problem into a useful invention.";
-
+                    "🚀 Creative idea: Turn an everyday problem into an invention.";
             }
-
         }
-
     </script>
 
 </body>
-
 </html>
