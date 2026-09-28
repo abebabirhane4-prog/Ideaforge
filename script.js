@@ -42,3 +42,15 @@ function createIdea() {
 
     result.innerText = categoryIdeas[randomIndex];
 }
+function saveIdea() {
+    const idea = document.getElementById("result").innerText;
+
+    if (idea === "") {
+        alert("Generate an idea first!");
+        return;
+    }
+
+    localStorage.setItem("savedIdea", idea);
+
+    alert("❤️ Idea saved!");
+}
