@@ -102,7 +102,37 @@
     </div>
 
     <script>
-        function createIdea() {
+       function createIdea() {
+
+    const category = document.getElementById("category").value;
+    const result = document.getElementById("result");
+
+    if (category === "business") {
+
+        result.innerText =
+            "💼 Business idea: Create a platform that helps small businesses find customers.";
+
+    } else if (category === "app") {
+
+        result.innerText =
+            "📱 App idea: Create an app that turns everyday problems into simple solutions.";
+
+    } else if (category === "school") {
+
+        result.innerText =
+            "🎓 School idea: Create a smart study app that turns lessons into challenges.";
+
+    } else if (category === "money") {
+
+        result.innerText =
+            "💰 Money idea: Create a marketplace where people can sell digital products.";
+
+    } else {
+
+        result.innerText =
+            "🚀 Random idea: Create something that solves a problem people face every day.";
+    }
+}
 
             const question =
                 document.getElementById("ideaInput").value.toLowerCase();
