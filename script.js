@@ -54,3 +54,13 @@ function saveIdea() {
 
     alert("❤️ Idea saved!");
 }
+function showSavedIdea() {
+    const saved = localStorage.getItem("savedIdea");
+    const savedIdeas = document.getElementById("savedIdeas");
+
+    if (saved) {
+        savedIdeas.innerText = saved;
+    } else {
+        savedIdeas.innerText = "No saved ideas yet.";
+    }
+}
