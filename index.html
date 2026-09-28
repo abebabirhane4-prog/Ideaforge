@@ -1,38 +1,20 @@
+script>
+function createIdea() {
 
-!DOCTYPE html>
-<html>
-<head>
-    <title>IdeaForge</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    const ideas = [
+        "Create an app that helps students study.",
+        "Build a platform for young entrepreneurs.",
+        "Create an app that solves everyday problems.",
+        "Build a marketplace for digital creators.",
+        "Create a tool that teaches beginners coding."
+    ];
 
-<body>
+    const randomIdea =
+        ideas[Math.floor(Math.random() * ideas.length)];
 
-    <div class="app">
-
-        <h1>IDEA FORGE</h1>
-
-        <p>Turn your thoughts into something real.</p>
-
-        <input
-            id="ideaInput"
-            type="text"
-            placeholder="What are you creating today?"
-        >
-
-        <button onclick="createIdea()">
-            CREATE MY IDEA 🚀
-        </button>
-
-        <h2 id="result"></h2>
-
-    </div>
-
-    <script src="script.js"></script>
+    document.getElementById("result").innerText = randomIdea;
+}
+</script>
 
 </body>
 </html>
-
-Do not change anything in this code.
-
-After you paste it, click Commit changes → Commit changes. Then we'll test your app. 🚀
