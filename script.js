@@ -64,3 +64,15 @@ function showSavedIdea() {
         savedIdeas.innerText = "No saved ideas yet.";
     }
 }
+unction displaySavedIdeas() {
+    const saved = localStorage.getItem("savedIdea");
+    const savedIdeas = document.getElementById("savedIdeas");
+
+    if (saved) {
+        savedIdeas.innerText = saved;
+    } else {
+        savedIdeas.innerText = "No saved ideas yet.";
+    }
+}
+
+displaySavedIdeas();
