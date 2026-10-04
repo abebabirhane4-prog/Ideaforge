@@ -1,276 +1,870 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechForge</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0b14;
-      color: white;
-      text-align: center;
+<title>TechForge</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080810;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    background: #0d0d18;
+    border-bottom: 1px solid #252538;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #9b6cff;
+}
+
+nav button {
+    background: transparent;
+    color: white;
+    border: none;
+    margin-left: 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+nav button:hover {
+    color: #a879ff;
+}
+
+.hero {
+    text-align: center;
+    padding: 75px 20px 45px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin: 0;
+}
+
+.hero h1 span {
+    color: #9b6cff;
+}
+
+.hero p {
+    color: #aaaabd;
+    font-size: 18px;
+    max-width: 650px;
+    margin: 20px auto;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.card {
+    background: #12121f;
+    border: 1px solid #28283d;
+    border-radius: 22px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+input, textarea {
+    width: 100%;
+    background: #090912;
+    color: white;
+    border: 1px solid #34344d;
+    border-radius: 12px;
+    padding: 14px;
+    margin: 8px 0;
+    outline: none;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input:focus, textarea:focus {
+    border-color: #9b6cff;
+}
+
+button.main {
+    background: #8d5cff;
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 11px;
+    margin: 8px 5px 8px 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button.main:hover {
+    background: #a77cff;
+    transform: translateY(-1px);
+}
+
+button.secondary {
+    background: #222237;
+    color: white;
+    border: 1px solid #383852;
+    padding: 13px 20px;
+    border-radius: 11px;
+    margin: 8px 5px 8px 0;
+    cursor: pointer;
+}
+
+button.danger {
+    background: #4b202b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#ideaDisplay {
+    min-height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #0a0a13;
+    border: 1px solid #303049;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    font-size: 19px;
+    line-height: 1.5;
+}
+
+.message {
+    min-height: 25px;
+    color: #bda6ff;
+    margin-top: 8px;
+}
+
+.saved-item {
+    background: #0c0c16;
+    border: 1px solid #2d2d43;
+    border-radius: 13px;
+    padding: 18px;
+    margin: 12px 0;
+}
+
+.saved-number {
+    color: #9b6cff;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.feature {
+    background: #11111c;
+    border: 1px solid #29293e;
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.feature h3 {
+    margin-top: 0;
+}
+
+.feature p {
+    color: #9999aa;
+    line-height: 1.5;
+}
+
+footer {
+    text-align: center;
+    color: #77778a;
+    padding: 50px 20px;
+}
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 18px 20px;
     }
 
-    .container {
-      max-width: 700px;
-      margin: auto;
-      padding: 40px 20px;
+    nav {
+        display: none;
     }
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 5px;
+    .hero h1 {
+        font-size: 40px;
     }
 
-    .tagline {
-      color: #aaa;
-      margin-bottom: 35px;
+    .feature-grid {
+        grid-template-columns: 1fr;
     }
 
     .card {
-      background: #151522;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 25px rgba(120, 80, 255, 0.2);
+        padding: 20px;
     }
+}
 
-    button {
-      border: none;
-      padding: 13px 20px;
-      margin: 8px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: bold;
-      background: #7c4dff;
-      color: white;
-    }
-
-    button:hover {
-      transform: scale(1.04);
-    }
-
-    #ideaBox {
-      margin: 25px 0;
-      padding: 20px;
-      min-height: 60px;
-      background: #0f0f1b;
-      border-radius: 12px;
-      font-size: 18px;
-    }
-
-    #savedBox {
-      display: none;
-      margin-top: 25px;
-      text-align: left;
-    }
-
-    .savedIdea {
-      background: #202031;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 10px;
-    }
-
-    input {
-      width: 80%;
-      padding: 13px;
-      border-radius: 10px;
-      border: none;
-      margin: 8px;
-    }
-  </style>
+</style>
 </head>
 
 <body>
-<script>
-const ideas = [
-    "An app that helps students find study partners.",
-    "A platform where students can turn ideas into businesses.",
-    "An app that teaches coding through games.",
-    "A marketplace where students can sell their creations.",
-    "A platform that connects young entrepreneurs with mentors."
-];
 
-document.getElementById("generateButton").onclick = function() {
+<header>
 
-    const randomNumber = Math.floor(Math.random() * ideas.length);
+    <div class="logo">
+        Tech<span>Forge</span>
+    </div>
 
-    document.getElementById("ideaBox").textContent = ideas[randomNumber];
+    <nav>
+        <button onclick="showSection('home')">Home</button>
+        <button onclick="showSection('ideas')">Ideas</button>
+        <button onclick="showSection('saved')">Saved</button>
+        <button onclick="showSection('profile')">Profile</button>
+    </nav>
 
-};
-  
-</script>
-  <div class="container">
+</header>
 
-    <h1>TechForge</h1>
-    <p class="tagline">Turn your ideas into something real.</p>
 
-    <div class="card">
+<section id="home">
 
-      <h2>Build Your Idea 🚀</h2>
+    <div class="hero">
 
-      <input
-        type="text"
-        id="ideaInput"
-        placeholder="Write your own idea..."
-      >
+        <h1>
+            Turn Ideas Into
+            <span>Something Real.</span>
+        </h1>
 
-      <br>
-
-      <button id="createButton">
-        Create Idea
-      </button>
-
-      <button id="generateButton">
-        Generate Idea
-        document.getElementById("createButton").onclick = function() {
-    const idea = prompt("What is your idea?");
-
-    if (idea && idea.trim() !== "") {
-        document.getElementById("ideaBox").textContent = idea;
-    }
-};
-      </button>
-
-      <div id="ideaBox">
-        Your idea will appear here.
-      </div>
-
-      <button id="saveButton">
-        Save Idea
-      </button>
-
-      <button id="savedButton">
-        Saved Ideas
-      </button>
-
-      <div id="savedBox">
-        <h2>Your Saved Ideas</h2>
-        <div id="savedIdeasList"></div>
-      </div>
+        <p>
+            TechForge is a place where students can create ideas,
+            build projects, save their work and turn their imagination
+            into something real.
+        </p>
 
     </div>
-  </div>
 
 
-  <script>
+    <div class="container">
 
-    // Ideas that TechForge can generate
-    const ideas = [
-      "An app that helps students find study partners.",
-      "A platform where students can turn school projects into businesses.",
-      "An app that helps students learn coding through challenges.",
-      "A marketplace where students can sell their creative work.",
-      "An app that connects young entrepreneurs with mentors.",
-      "A platform where students can pitch business ideas.",
-      "An app that helps students organize their school life.",
-      "A website where students collaborate to build projects."
-    ];
+        <div class="card">
 
-    // Find the elements from the page
-    const ideaInput = document.getElementById("ideaInput");
-    const ideaBox = document.getElementById("ideaBox");
+            <h2>🚀 Build Your Idea</h2>
 
-    const createButton = document.getElementById("createButton");
-    const generateButton = document.getElementById("generateButton");
-    const saveButton = document.getElementById("saveButton");
-    const savedButton = document.getElementById("savedButton");
+            <p>
+                Generate an idea or create your own.
+            </p>
 
-    const savedBox = document.getElementById("savedBox");
-    const savedIdeasList = document.getElementById("savedIdeasList");
+            <div id="ideaDisplay">
+                Your idea will appear here.
+            </div>
+
+            <button class="main" onclick="generateIdea()">
+                💡 Generate Idea
+            </button>
+
+            <button class="main" onclick="createIdea()">
+                ✍️ Create Idea
+            </button>
+
+            <button class="secondary" onclick="saveCurrentIdea()">
+                💾 Save Idea
+            </button>
+
+            <div id="message" class="message"></div>
+
+        </div>
 
 
-    // CREATE IDEA
-    createButton.addEventListener("click", function() {
+        <div class="card">
 
-      const userIdea = ideaInput.value.trim();
+            <h2>⚡ Why TechForge?</h2>
 
-      if (userIdea === "") {
-        ideaBox.textContent = "Please write an idea first! 💡";
+            <div class="feature-grid">
+
+                <div class="feature">
+                    <h3>💡 Ideas</h3>
+                    <p>
+                        Discover and create new ideas.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <h3>🛠️ Build</h3>
+                    <p>
+                        Turn your ideas into projects.
+                    </p>
+                </div>
+
+                <div class="feature">
+                    <h3>🌎 Connect</h3>
+                    <p>
+                        Eventually connect with other creators,
+                        mentors and investors.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="ideas" class="hidden">
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>💡 Your Ideas</h2>
+
+            <p>
+                Create a new idea below.
+            </p>
+
+            <textarea
+                id="customIdea"
+                placeholder="Write your idea here..."
+            ></textarea>
+
+            <button class="main" onclick="createCustomIdea()">
+                Create Idea
+            </button>
+
+            <div id="customMessage" class="message"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="saved" class="hidden">
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>📚 Saved Ideas</h2>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search your saved ideas..."
+                oninput="displaySavedIdeas()"
+            >
+
+            <div id="savedIdeasContainer"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="profile" class="hidden">
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>👤 Your Profile</h2>
+
+            <input
+                type="text"
+                id="profileName"
+                placeholder="Your name"
+            >
+
+            <input
+                type="text"
+                id="profileUsername"
+                placeholder="Username"
+            >
+
+            <button class="main" onclick="saveProfile()">
+                Save Profile
+            </button>
+
+            <div id="profileMessage" class="message"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>TechForge © 2026</p>
+    <p>Build. Create. Forge the Future.</p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   TECHFORGE JAVASCRIPT
+========================= */
+
+
+/* IDEA DATABASE */
+
+const ideas = [
+
+    "Create an app that helps students find study partners.",
+
+    "Build a platform where students can turn school projects into businesses.",
+
+    "Create an app that teaches coding through fun challenges.",
+
+    "Build a marketplace where students can sell their creative work.",
+
+    "Create a platform that connects young entrepreneurs with mentors.",
+
+    "Build an app that helps students organize their school life.",
+
+    "Create a website where students can collaborate on projects.",
+
+    "Build a platform where students can pitch their startup ideas.",
+
+    "Create an app that helps students discover useful skills.",
+
+    "Build a social platform for young creators and entrepreneurs.",
+
+    "Create a service that helps students find opportunities.",
+
+    "Build a platform where students can showcase their projects."
+
+];
+
+
+/* CURRENT IDEA */
+
+let currentIdea = "";
+
+
+/* GENERATE IDEA */
+
+function generateIdea() {
+
+    const randomIndex =
+        Math.floor(Math.random() * ideas.length);
+
+    currentIdea = ideas[randomIndex];
+
+    document.getElementById("ideaDisplay").textContent =
+        currentIdea;
+
+    showMessage("New idea generated! 💡");
+
+}
+
+
+/* CREATE IDEA */
+
+function createIdea() {
+
+    const idea = prompt(
+        "What idea do you want to create?"
+    );
+
+    if (idea === null) {
         return;
-      }
+    }
 
-      ideaBox.textContent = userIdea;
+    if (idea.trim() === "") {
 
-    });
+        showMessage("Please enter an idea.");
+
+        return;
+    }
+
+    currentIdea = idea.trim();
+
+    document.getElementById("ideaDisplay").textContent =
+        currentIdea;
+
+    showMessage("Your idea was created! 🚀");
+
+}
 
 
-    // GENERATE IDEA
-    generateButton.addEventListener("click", function() {
+/* SAVE CURRENT IDEA */
 
-      const randomNumber = Math.floor(Math.random() * ideas.length);
+function saveCurrentIdea() {
 
-      ideaBox.textContent = ideas[randomNumber];
-
-    });
-
-
-    // SAVE IDEA
-    saveButton.addEventListener("click", function() {
-
-      const currentIdea = ideaBox.textContent;
-
-      if (
+    if (
         currentIdea === "" ||
         currentIdea === "Your idea will appear here."
-      ) {
-        alert("Create or generate an idea first!");
+    ) {
+
+        showMessage(
+            "Generate or create an idea first."
+        );
+
         return;
-      }
+    }
 
-      let savedIdeas =
-        JSON.parse(localStorage.getItem("techforgeIdeas")) || [];
 
-      savedIdeas.push(currentIdea);
+    let savedIdeas =
+        JSON.parse(
+            localStorage.getItem("techforgeSavedIdeas")
+        ) || [];
 
-      localStorage.setItem(
-        "techforgeIdeas",
+
+    savedIdeas.push({
+        text: currentIdea,
+        date: new Date().toLocaleString()
+    });
+
+
+    localStorage.setItem(
+        "techforgeSavedIdeas",
         JSON.stringify(savedIdeas)
-      );
-
-      alert("Idea saved! 💜");
-
-    });
+    );
 
 
-    // SHOW SAVED IDEAS
-    savedButton.addEventListener("click", function() {
+    showMessage("Idea saved! 💜");
 
-      savedBox.style.display = "block";
+}
 
-      let savedIdeas =
-        JSON.parse(localStorage.getItem("techforgeIdeas")) || [];
 
-      savedIdeasList.innerHTML = "";
+/* CREATE CUSTOM IDEA */
 
-      if (savedIdeas.length === 0) {
+function createCustomIdea() {
 
-        savedIdeasList.innerHTML =
-          "<p>You haven't saved any ideas yet.</p>";
+    const input =
+        document.getElementById("customIdea");
+
+    const idea =
+        input.value.trim();
+
+
+    if (idea === "") {
+
+        document.getElementById(
+            "customMessage"
+        ).textContent =
+            "Please write an idea first.";
 
         return;
-      }
+    }
 
-      savedIdeas.forEach(function(idea, index) {
 
-        const div = document.createElement("div");
+    currentIdea = idea;
 
-        div.className = "savedIdea";
+    document.getElementById(
+        "ideaDisplay"
+    ).textContent = idea;
 
-        div.textContent =
-          (index + 1) + ". " + idea;
 
-        savedIdeasList.appendChild(div);
+    input.value = "";
 
-      });
+
+    document.getElementById(
+        "customMessage"
+    ).textContent =
+        "Idea created successfully! 🚀";
+
+}
+
+
+/* DISPLAY SAVED IDEAS */
+
+function displaySavedIdeas() {
+
+    const container =
+        document.getElementById(
+            "savedIdeasContainer"
+        );
+
+
+    let savedIdeas =
+        JSON.parse(
+            localStorage.getItem(
+                "techforgeSavedIdeas"
+            )
+        ) || [];
+
+
+    const search =
+        document.getElementById(
+            "searchInput"
+        ).value.toLowerCase();
+
+
+    const filtered =
+        savedIdeas.filter(function(item) {
+
+            return item.text
+                .toLowerCase()
+                .includes(search);
+
+        });
+
+
+    container.innerHTML = "";
+
+
+    if (filtered.length === 0) {
+
+        container.innerHTML =
+            "<p>No saved ideas found.</p>";
+
+        return;
+    }
+
+
+    filtered.forEach(function(item, index) {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "saved-item";
+
+
+        div.innerHTML = `
+
+            <div>
+                <span class="saved-number">
+                    Idea ${index + 1}
+                </span>
+            </div>
+
+            <p>${escapeHTML(item.text)}</p>
+
+            <small>
+                Saved: ${item.date}
+            </small>
+
+            <br>
+
+            <button
+                class="danger"
+                onclick="deleteIdea(${savedIdeas.indexOf(item)})"
+            >
+                Delete
+            </button>
+
+        `;
+
+
+        container.appendChild(div);
 
     });
 
-  </script>
+}
+
+
+/* DELETE IDEA */
+
+function deleteIdea(index) {
+
+    let savedIdeas =
+        JSON.parse(
+            localStorage.getItem(
+                "techforgeSavedIdeas"
+            )
+        ) || [];
+
+
+    savedIdeas.splice(index, 1);
+
+
+    localStorage.setItem(
+        "techforgeSavedIdeas",
+        JSON.stringify(savedIdeas)
+    );
+
+
+    displaySavedIdeas();
+
+}
+
+
+/* NAVIGATION */
+
+function showSection(section) {
+
+    document.getElementById("home")
+        .classList.add("hidden");
+
+    document.getElementById("ideas")
+        .classList.add("hidden");
+
+    document.getElementById("saved")
+        .classList.add("hidden");
+
+    document.getElementById("profile")
+        .classList.add("hidden");
+
+
+    document.getElementById(section)
+        .classList.remove("hidden");
+
+
+    if (section === "saved") {
+
+        displaySavedIdeas();
+
+    }
+
+}
+
+
+/* MESSAGE */
+
+function showMessage(message) {
+
+    document.getElementById(
+        "message"
+    ).textContent = message;
+
+
+    setTimeout(function() {
+
+        document.getElementById(
+            "message"
+        ).textContent = "";
+
+    }, 3000);
+
+}
+
+
+/* PROFILE */
+
+function saveProfile() {
+
+    const name =
+        document.getElementById(
+            "profileName"
+        ).value.trim();
+
+
+    const username =
+        document.getElementById(
+            "profileUsername"
+        ).value.trim();
+
+
+    if (name === "" || username === "") {
+
+        document.getElementById(
+            "profileMessage"
+        ).textContent =
+            "Please fill in both fields.";
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        "techforgeProfile",
+        JSON.stringify({
+            name: name,
+            username: username
+        })
+    );
+
+
+    document.getElementById(
+        "profileMessage"
+    ).textContent =
+        "Profile saved! 👤";
+
+}
+
+
+/* LOAD PROFILE */
+
+function loadProfile() {
+
+    const profile =
+        JSON.parse(
+            localStorage.getItem(
+                "techforgeProfile"
+            )
+        );
+
+
+    if (!profile) {
+        return;
+    }
+
+
+    document.getElementById(
+        "profileName"
+    ).value = profile.name;
+
+
+    document.getElementById(
+        "profileUsername"
+    ).value = profile.username;
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/* START APP */
+
+loadProfile();
+
+</script>
 
 </body>
 </html>
