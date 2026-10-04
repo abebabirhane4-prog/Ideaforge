@@ -1,44 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IdeaForge</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechForge</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0b14;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 5px;
+    }
+
+    .tagline {
+      color: #aaa;
+      margin-bottom: 35px;
+    }
+
+    .card {
+      background: #151522;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(120, 80, 255, 0.2);
+    }
+
+    button {
+      border: none;
+      padding: 13px 20px;
+      margin: 8px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      background: #7c4dff;
+      color: white;
+    }
+
+    button:hover {
+      transform: scale(1.04);
+    }
+
+    #ideaBox {
+      margin: 25px 0;
+      padding: 20px;
+      min-height: 60px;
+      background: #0f0f1b;
+      border-radius: 12px;
+      font-size: 18px;
+    }
+
+    #savedBox {
+      display: none;
+      margin-top: 25px;
+      text-align: left;
+    }
+
+    .savedIdea {
+      background: #202031;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 10px;
+    }
+
+    input {
+      width: 80%;
+      padding: 13px;
+      border-radius: 10px;
+      border: none;
+      margin: 8px;
+    }
+  </style>
 </head>
 
 <body>
 
-    <main class="app">
+  <div class="container">
 
-        <h1>IDEA FORGE</h1>
+    <h1>TechForge</h1>
+    <p class="tagline">Turn your ideas into something real.</p>
 
-        <p>Turn your thoughts into something real.</p>
+    <div class="card">
 
-        <select id="category">
-            <option value="random">🚀 Random</option>
-            <option value="business">💼 Business</option>
-            <option value="app">📱 App</option>
-            <option value="school">🎓 School</option>
-            <option value="money">💰 Money</option>
-        </select>
+      <h2>Build Your Idea 🚀</h2>
 
-        <input
-            id="ideaInput"
-            type="text"
-            placeholder="What are you creating today?"
-        >
+      <input
+        type="text"
+        id="ideaInput"
+        placeholder="Write your own idea..."
+      >
 
-        <button onclick="createIdea()">CREATE MY IDEA 🚀</button>
-<button onclick="createIdea()">🔄 GENERATE ANOTHER</button>
-        <div id="result"></div>
-<button onclick="saveIdea()">❤️ SAVE IDEA</button>
-    </main>
-    <h2>📂 SAVED IDEAS</h2>
+      <br>
 
-<div id="savedIdeas"></div>
+      <button id="createButton">
+        Create Idea
+      </button>
 
-    <script src="script.js"></script>
+      <button id="generateButton">
+        Generate Idea
+      </button>
+
+      <div id="ideaBox">
+        Your idea will appear here.
+      </div>
+
+      <button id="saveButton">
+        Save Idea
+      </button>
+
+      <button id="savedButton">
+        Saved Ideas
+      </button>
+
+      <div id="savedBox">
+        <h2>Your Saved Ideas</h2>
+        <div id="savedIdeasList"></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script>
+
+    // Ideas that TechForge can generate
+    const ideas = [
+      "An app that helps students find study partners.",
+      "A platform where students can turn school projects into businesses.",
+      "An app that helps students learn coding through challenges.",
+      "A marketplace where students can sell their creative work.",
+      "An app that connects young entrepreneurs with mentors.",
+      "A platform where students can pitch business ideas.",
+      "An app that helps students organize their school life.",
+      "A website where students collaborate to build projects."
+    ];
+
+    // Find the elements from the page
+    const ideaInput = document.getElementById("ideaInput");
+    const ideaBox = document.getElementById("ideaBox");
+
+    const createButton = document.getElementById("createButton");
+    const generateButton = document.getElementById("generateButton");
+    const saveButton = document.getElementById("saveButton");
+    const savedButton = document.getElementById("savedButton");
+
+    const savedBox = document.getElementById("savedBox");
+    const savedIdeasList = document.getElementById("savedIdeasList");
+
+
+    // CREATE IDEA
+    createButton.addEventListener("click", function() {
+
+      const userIdea = ideaInput.value.trim();
+
+      if (userIdea === "") {
+        ideaBox.textContent = "Please write an idea first! 💡";
+        return;
+      }
+
+      ideaBox.textContent = userIdea;
+
+    });
+
+
+    // GENERATE IDEA
+    generateButton.addEventListener("click", function() {
+
+      const randomNumber = Math.floor(Math.random() * ideas.length);
+
+      ideaBox.textContent = ideas[randomNumber];
+
+    });
+
+
+    // SAVE IDEA
+    saveButton.addEventListener("click", function() {
+
+      const currentIdea = ideaBox.textContent;
+
+      if (
+        currentIdea === "" ||
+        currentIdea === "Your idea will appear here."
+      ) {
+        alert("Create or generate an idea first!");
+        return;
+      }
+
+      let savedIdeas =
+        JSON.parse(localStorage.getItem("techforgeIdeas")) || [];
+
+      savedIdeas.push(currentIdea);
+
+      localStorage.setItem(
+        "techforgeIdeas",
+        JSON.stringify(savedIdeas)
+      );
+
+      alert("Idea saved! 💜");
+
+    });
+
+
+    // SHOW SAVED IDEAS
+    savedButton.addEventListener("click", function() {
+
+      savedBox.style.display = "block";
+
+      let savedIdeas =
+        JSON.parse(localStorage.getItem("techforgeIdeas")) || [];
+
+      savedIdeasList.innerHTML = "";
+
+      if (savedIdeas.length === 0) {
+
+        savedIdeasList.innerHTML =
+          "<p>You haven't saved any ideas yet.</p>";
+
+        return;
+      }
+
+      savedIdeas.forEach(function(idea, index) {
+
+        const div = document.createElement("div");
+
+        div.className = "savedIdea";
+
+        div.textContent =
+          (index + 1) + ". " + idea;
+
+        savedIdeasList.appendChild(div);
+
+      });
+
+    });
+
+  </script>
 
 </body>
 </html>
