@@ -127,6 +127,13 @@ document.getElementById("generateButton").onclick = function() {
 
       <button id="generateButton">
         Generate Idea
+        document.getElementById("createButton").onclick = function() {
+    const idea = prompt("What is your idea?");
+
+    if (idea && idea.trim() !== "") {
+        document.getElementById("ideaBox").textContent = idea;
+    }
+};
       </button>
 
       <div id="ideaBox">
