@@ -87,8 +87,20 @@
 
 <body>
 <script>
+const ideas = [
+    "An app that helps students find study partners.",
+    "A platform where students can turn ideas into businesses.",
+    "An app that teaches coding through games.",
+    "A marketplace where students can sell their creations.",
+    "A platform that connects young entrepreneurs with mentors."
+];
+
 document.getElementById("generateButton").onclick = function() {
-    alert("Generate Idea is working!");
+
+    const randomNumber = Math.floor(Math.random() * ideas.length);
+
+    document.getElementById("ideaBox").textContent = ideas[randomNumber];
+
 };
   
 </script>
